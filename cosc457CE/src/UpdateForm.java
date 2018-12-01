@@ -48,10 +48,6 @@ public class UpdateForm extends javax.swing.JFrame {
 
         jLabel3.setText("Row ID:");
 
-        jTextField1.setText("jTextField1");
-
-        jTextField2.setText("jTextField2");
-
         jButton1.setText("Back");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
