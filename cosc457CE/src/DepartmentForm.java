@@ -48,12 +48,6 @@ public class DepartmentForm extends javax.swing.JFrame {
 
         jLabel3.setText("Department Name:");
 
-        jTextField1.setText("jTextField1");
-
-        jTextField2.setText("jTextField2");
-
-        jTextField3.setText("jTextField3");
-
         jButton1.setText("Submit");
 
         jButton2.setText("Cancel");
@@ -97,8 +91,11 @@ public class DepartmentForm extends javax.swing.JFrame {
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel4)
                     .addComponent(jLabel7))
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addContainerGap(284, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextField1, jTextField2, jTextField3});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()

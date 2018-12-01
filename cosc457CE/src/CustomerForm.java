@@ -48,23 +48,13 @@ public class CustomerForm extends javax.swing.JFrame {
 
         jLabel1.setText("Customer Name*:");
 
-        jTextField1.setText("jTextField1");
-
         jLabel2.setText("Customer Number*:");
-
-        jTextField2.setText("jTextField2");
 
         jLabel3.setText("Address*:");
 
-        jTextField3.setText("jTextField3");
-
         jLabel4.setText("Point of Contact*:");
 
-        jTextField4.setText("jTextField4");
-
         jLabel5.setText("Phone Number*:");
-
-        jTextField5.setText("jTextField5");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel6.setText("Enter Customer Information:");
