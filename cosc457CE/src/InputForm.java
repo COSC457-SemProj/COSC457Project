@@ -162,7 +162,7 @@ public class InputForm extends javax.swing.JFrame {
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LocationInformForm().setVisible(true);
+                new LocationInputForm().setVisible(true);
             }
         });
     }//GEN-LAST:event_jButton5MouseClicked
