@@ -57,6 +57,11 @@ public class DepartmentForm extends javax.swing.JFrame {
         jButton1.setText("Submit");
 
         jButton2.setText("Cancel");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel4.setText("Enter Department Data:");
@@ -122,6 +127,10 @@ public class DepartmentForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments

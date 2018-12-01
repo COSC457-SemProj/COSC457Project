@@ -1,3 +1,6 @@
+
+import java.awt.event.WindowEvent;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -44,25 +47,40 @@ public class InputForm extends javax.swing.JFrame {
         });
 
         jButton2.setText("Customer");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         jButton3.setText("Department");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         jButton4.setText("Contract");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
             }
         });
 
         jButton5.setText("Location");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel1.setText("Select what you would like to input:");
 
         jButton6.setText("Back");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
             }
         });
 
@@ -117,14 +135,6 @@ public class InputForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -132,6 +142,44 @@ public class InputForm extends javax.swing.JFrame {
             }
         });
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new CustomerForm().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new DepartmentForm().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new LocationForm().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ContractForm().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // CANCEL BUTTON
+        //this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton6MouseClicked
 
     /**
      * @param args the command line arguments
