@@ -146,7 +146,7 @@ public class InputForm extends javax.swing.JFrame {
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CustomerForm().setVisible(true);
+                new CustomerInputForm().setVisible(true);
             }
         });
     }//GEN-LAST:event_jButton2MouseClicked
@@ -154,7 +154,7 @@ public class InputForm extends javax.swing.JFrame {
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DepartmentForm().setVisible(true);
+                new DepartmentInputForm().setVisible(true);
             }
         });
     }//GEN-LAST:event_jButton3MouseClicked
@@ -162,7 +162,7 @@ public class InputForm extends javax.swing.JFrame {
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LocationForm().setVisible(true);
+                new LocationInputForm().setVisible(true);
             }
         });
     }//GEN-LAST:event_jButton5MouseClicked
@@ -170,7 +170,7 @@ public class InputForm extends javax.swing.JFrame {
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ContractForm().setVisible(true);
+                new ContractInputForm().setVisible(true);
             }
         });
     }//GEN-LAST:event_jButton4MouseClicked
