@@ -32,7 +32,7 @@ public class DBController {
             String password = userFile.nextLine().replace("\n", "");
             userFile.close();
             newInstance = Class.forName("com.mysql.jdbc.Driver").newInstance();
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3360/cgood4db", username, password);
+            connection = DriverManager.getConnection("jdbc:mysql://triton.towson.edu:3360/cgood4db", username, password);
         }catch(ClassNotFoundException | InstantiationException | IllegalAccessException e){
             throw new DBControllerException("The driver com.mysql.jdbc.Driver cannot be found.");
         }catch(SQLException e){
