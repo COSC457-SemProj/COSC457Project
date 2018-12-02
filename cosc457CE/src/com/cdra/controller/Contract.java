@@ -23,20 +23,20 @@ public class Contract extends Model {
     public String getConName(){
         return conName;
     }
-    public String ConBudget(){
+    public String getConBudget(){
         return conBudget;
     }
     public void setConNum(String conNum){
-        this.conNum = conNum;
+        this.conNum = validateInput(conNum);
     }
     public void setConCustNum(String conCustNum){
-        this.conCustNum = conCustNum;
+        this.conCustNum = validateInput(conCustNum);
     }
     public void setConName(String conName){
-        this.conName = conName; 
+        this.conName = validateInput(conName); 
     }
     public void setConBudget(String conBudget){
-        this.conBudget = conBudget;
+        this.conBudget = validateInput(conBudget);
     }
 
     @Override

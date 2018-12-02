@@ -18,11 +18,11 @@ public class Race extends Model{
 
 
     public void setRaceEmpNum(String raceEmpNum){
-        this.raceEmpNum = raceEmpNum;
+        this.raceEmpNum = validateInput(raceEmpNum);
     }
 
     public void setRace(String race){
-        this.race = race;
+        this.race = validateInput(race);
     }
 
     public boolean validate(){

@@ -1,4 +1,7 @@
 package com.cdra.form;
+import com.cdra.Form.update.UpdateForm;
+import com.cdra.Form.input.InputForm;
+import com.cdra.SystemInterface;
 import java.awt.event.WindowEvent;
 
 /*
@@ -164,6 +167,7 @@ public class HomePage extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        SystemInterface.__init__();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

@@ -120,87 +120,87 @@ public class Employee extends Model {
     }
 
     public void setEmpNum(String empNum) {
-        this.empNum = empNum;
+        this.empNum = validateInput(empNum);
     }
 
     public void setEmpDeptNum(String empDeptNum) {
-        this.empDeptNum = empDeptNum;
+        this.empDeptNum = validateInput(empDeptNum);
     }
 
     public void setEmpFName(String empFName) {
-        this.empFName = empFName;
+        this.empFName = validateInput(empFName);
     }
 
     public void setEmpMName(String empMName) {
-        this.empMName = empMName;
+        this.empMName = validateInput(empMName);
     }
 
     public void setEmpLName(String empLName) {
-        this.empLName = empLName;
+        this.empLName = validateInput(empLName);
     }
 
     public void setEmpSSN(String empSSN) {
-        this.empSSN = empSSN;
+        this.empSSN = validateInput(empSSN);
     }
 
     public void setEmpDoB(String empDoB) {
-        this.empDoB = empDoB;
+        this.empDoB = validateInput(empDoB);
     }
 
     public void setEmpPoB(String empPoB) {
-        this.empPoB = empPoB;
+        this.empPoB = validateInput(empPoB);
     }
 
     public void setEmpAddress(String empAddress) {
-        this.empAddress = empAddress;
+        this.empAddress = validateInput(empAddress);
     }
 
     public void setEmpZipCode(String empZipCode) {
-        this.empZipCode = empZipCode;
+        this.empZipCode = validateInput(empZipCode);
     }
 
     public void setEmpEmergencyPhone(String empEmergencyPhone) {
-        this.empEmergencyPhone = empEmergencyPhone;
+        this.empEmergencyPhone = validateInput(empEmergencyPhone);
     }
 
     public void setEmpEmergencyPoC(String empEmergencyPoC) {
-        this.empEmergencyPoC = empEmergencyPoC;
+        this.empEmergencyPoC = validateInput(empEmergencyPoC);
     }
 
     public void setEmpTitle(String empTitle) {
-        this.empTitle = empTitle;
+        this.empTitle = validateInput(empTitle);
     }
 
     public void setEmpGender(String empGender) {
-        this.empGender = empGender;
+        this.empGender = validateInput(empGender);
     }
 
     public void setEmpHomePhone(String empHomePhone) {
-        this.empHomePhone = empHomePhone;
+        this.empHomePhone = validateInput(empHomePhone);
     }
 
     public void setEmpCellPhone(String empCellPhone) {
-        this.empCellPhone = empCellPhone;
+        this.empCellPhone = validateInput(empCellPhone);
     }
 
     public void setEmpAnniversaryMonth(String empAnniversaryMonth) {
-        this.empAnniversaryMonth = empAnniversaryMonth;
+        this.empAnniversaryMonth = validateInput(empAnniversaryMonth);
     }
 
     public void setEmpSixMonthReview(String empSixMonthReview) {
-        this.empSixMonthReview = empSixMonthReview;
+        this.empSixMonthReview = validateInput(empSixMonthReview);
     }
 
     public void setEmpAnnualReview(String empAnnualReview) {
-        this.empAnnualReview = empAnnualReview;
+        this.empAnnualReview = validateInput(empAnnualReview);
     }
 
     public void setEmpSalary(String empSalary) {
-        this.empSalary = empSalary;
+        this.empSalary = validateInput(empSalary);
     }
 
     public void setEmpVeteranStatus(String empVeteranStatus) {
-        this.empVeteranStatus = empVeteranStatus;
+        this.empVeteranStatus = validateInput(empVeteranStatus);
     }
 
     public boolean validate(){

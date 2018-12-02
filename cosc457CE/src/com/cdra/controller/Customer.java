@@ -32,19 +32,19 @@ public class Customer extends Model {
     }
 
     public void setCustNum(String custNum){
-        this.custNum = custNum;
+        this.custNum = validateInput(custNum);
     }
     public void setCustName(String custName){
-        this.custName = custName;
+        this.custName = validateInput(custName);
     }
     public void setCustPrimaryAddress(String custPrimaryAddress){
-        this.custPrimaryAddress = custPrimaryAddress;
+        this.custPrimaryAddress = validateInput(custPrimaryAddress);
     }
     public void setPoC(String PoC){
-        this.PoC = PoC;
+        this.PoC = validateInput(PoC);
     }
     public void setCustPhone(String custPhone){
-        this.custPhone = custPhone;
+        this.custPhone = validateInput(custPhone);
     }
 
     public boolean validate(){

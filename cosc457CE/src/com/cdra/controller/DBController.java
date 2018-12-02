@@ -49,6 +49,34 @@ public class DBController {
     public int executeUpdate(String query) throws SQLException{
         return connection.createStatement().executeUpdate(query);
     }
+    
+    public String validateInput(String input){
+        return input.replace("\'", "\\\'").
+                replace("\0", "\\\0").
+                replace("\b", "\\\b").
+                replace("\t", "\\\t").
+                replace("\n", "\\\n").
+                replace("\r", "\\\r").
+                replace("\"", "\\\"").
+                replace("%", "\\%").
+                replace("_", "\\_");
+    }
+    
+    public String[] validateInput(String[] input){
+        String[] validatedInput = new String[input.length];
+        for(int i = 0; i < input.length; i++){
+            validatedInput[i] = input[i].replace("\'", "\\\'").
+                replace("\0", "\\\0").
+                replace("\b", "\\\b").
+                replace("\t", "\\\t").
+                replace("\n", "\\\n").
+                replace("\r", "\\\r").
+                replace("\"", "\\\"").
+                replace("%", "\\%").
+                replace("_", "\\_");
+        }
+        return validatedInput;
+    }
 
     public boolean validateTable(String table){
         boolean valid = false;

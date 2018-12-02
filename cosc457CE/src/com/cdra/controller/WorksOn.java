@@ -20,15 +20,15 @@ public class WorksOn extends Model {
     public String getWorksOnHours() { return worksOnHours; }
 
     public void setWorksOnEmpNum(String worksOnEmpNum) {
-        this.worksOnEmpNum = worksOnEmpNum;
+        this.worksOnEmpNum = validateInput(worksOnEmpNum);
     }
 
     public void setWorksOnConNum(String worksOnConNum) {
-        this.worksOnConNum = worksOnConNum;
+        this.worksOnConNum = validateInput(worksOnConNum);
     }
 
     public void setWorksOnHours(String worksOnHours) {
-        this.worksOnHours = worksOnHours;
+        this.worksOnHours = validateInput(worksOnHours);
     }
 
     public boolean validate(){
