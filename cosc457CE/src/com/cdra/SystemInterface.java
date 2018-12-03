@@ -12,7 +12,7 @@ public class SystemInterface {
     private static DBController db;
 
     public static void __init__(){
-        db = new DBController("C:\\Users\\chris\\Documents\\dbinfo.txt");
+        db = new DBController("/home/cgood/dbinfo.txt");
     }
 
     public static String[][] select(String[] columns, String table, String condition){
