@@ -67,11 +67,11 @@ public class DBController {
         String[] validatedInput = new String[input.length];
         for(int i = 0; i < input.length; i++){
             validatedInput[i] = input[i].replace("\'", "\\\'").
-                replace("\0", "\\\0").
-                replace("\b", "\\\b").
-                replace("\t", "\\\t").
-                replace("\n", "\\\n").
-                replace("\r", "\\\r").
+                replace("\0", "\\0").
+                replace("\b", "\\b").
+                replace("\t", "\\t").
+                replace("\n", "\\n").
+                replace("\r", "\\r").
                 replace("\"", "\\\"").
                 replace("%", "\\%").
                 replace("_", "\\_");
@@ -105,7 +105,7 @@ public class DBController {
 
             StringBuilder sb = new StringBuilder();
             for (byte tByte : timeBuffer.array()) {
-                sb.append(tByte);
+                sb.append(Integer.toBinaryString(0xFF & tByte));
             }
             String timeString = sb.toString();
             sb = new StringBuilder();
@@ -116,12 +116,16 @@ public class DBController {
                     if (base32Bin[j].equals(b)) {
                         sb.append(base32Int[j]);
                     }
-
                 }
             }
+            
+            while(sb.length() != 7){
+                sb.insert(0, "0");
+            }
+            
             Model model = getModel(table);
             try {
-                if (executeQuery("SELECT * FROM " + model.getTableName() + " WHERE " + model.getPrimaryKey()[0] + "=" + sb.toString() + ";").getFetchSize() > 0) {
+                if (executeQuery("SELECT * FROM " + model.getTableName() + " WHERE " + model.getPrimaryKey()[0] + "=\'" + sb.toString() + "\';").getFetchSize() > 0) {
                     return generateUnique(table, System.currentTimeMillis());
                 }
             }catch(SQLException e){
@@ -130,7 +134,6 @@ public class DBController {
             return sb.toString();
         }
         return null;
-
     }
 
 //    String querys="select * from cgood4db.Employee;"; //your db

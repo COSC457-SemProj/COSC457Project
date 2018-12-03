@@ -5,7 +5,6 @@ import com.cdra.exception.InvalidSQLTypeException;
 public class Department extends Model {
     private String deptNum;
     private String deptLocNum;
-    private String deptManagerEmpNum;
     private String deptName;
 
     public Department(){
@@ -16,7 +15,6 @@ public class Department extends Model {
 
     public String getDeptNum() { return deptNum; }
     public String getDeptLocNum() { return deptLocNum; }
-    public String getDeptManagerEmpNum() { return deptManagerEmpNum; }
     public String getDeptName() { return deptName; }
 
     public void setDeptNum(String deptNum) {
@@ -25,10 +23,6 @@ public class Department extends Model {
 
     public void setDeptLocNum(String deptLocNum) {
         this.deptLocNum = validateInput(deptLocNum);
-    }
-
-    public void setDeptManagerEmpNum(String deptManagerEmpNum) {
-        this.deptManagerEmpNum = validateInput(deptManagerEmpNum);
     }
 
     public void setDeptName(String deptName) {
@@ -42,9 +36,6 @@ public class Department extends Model {
         if(deptLocNum == null || deptLocNum.length() != 7){
             return false;
         }
-        if(deptManagerEmpNum == null || deptManagerEmpNum.length() != 7){
-            return false;
-        }
         if(deptName == null || deptName.length() != 45){
             return false;
         }
@@ -53,15 +44,17 @@ public class Department extends Model {
 
     @Override
     public String getInsertQuery(){
-        return super.getInsertQuery() +
+        String superQuery;
+        if((superQuery = super.getInsertQuery()) == null){
+            return null;
+        }
+        return superQuery +
                 "VALUES (\'" +
                 deptNum +
                 "\', \'" +
                 deptLocNum +
                 "\', \'" +
-                deptManagerEmpNum +
-                "\', \'" +
                 deptName +
-                "\')";
+                "\');";
     }
 }

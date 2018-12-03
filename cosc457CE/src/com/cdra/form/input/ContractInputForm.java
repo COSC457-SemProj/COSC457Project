@@ -148,12 +148,8 @@ public class ContractInputForm extends javax.swing.JFrame {
         if(SystemInterface.insert(contract) == null){
             JOptionPane.showMessageDialog(null, "Error, check your data and try again");
         }else{
-            JOptionPane.showMessageDialog(null, "Insert Successful, the Employee ID is " + id);
-            java.awt.EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    new HomePage().setVisible(true);
-                }
-            });
+            JOptionPane.showMessageDialog(null, "Insert Successful, the Contract ID is " + id);
+            this.setVisible(false);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

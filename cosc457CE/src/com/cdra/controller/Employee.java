@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 
 public class Employee extends Model {
     private String empNum;
-    private String empDeptNum;
     private String empFName;
     private String empMName;
     private String empLName;
@@ -28,7 +27,7 @@ public class Employee extends Model {
     private String empVeteranStatus;
 
     public Employee(){
-        super("Proj_Employee", new String[] {"EmpNum","EmpDeptNum", "EmpFName", "EmpLName", "EmpLName", "EmpSSN",
+        super("Proj_Employee", new String[] {"EmpNum", "EmpFName", "EmpLName", "EmpLName", "EmpSSN",
                 "EmpDoB", "EmpPoB", "EmpAddress", "EmpZipCode", "EmpEmergencyPhone", "EmpEmergencyPoC", "EmpTitle",
                 "EmpGender", "EmpHomePhone", "EmpCellPhone", "EmpAnniversaryMonth", "EmpSixMonthReview", "EmpAnnualReview",
                 "EmpSalary", "EmpVeteranStatus"},
@@ -37,10 +36,6 @@ public class Employee extends Model {
 
     public String getEmpNum() {
         return empNum;
-    }
-
-    public String getEmpDeptNum() {
-        return empDeptNum;
     }
 
     public String getEmpFName() {
@@ -123,10 +118,6 @@ public class Employee extends Model {
         this.empNum = validateInput(empNum);
     }
 
-    public void setEmpDeptNum(String empDeptNum) {
-        this.empDeptNum = validateInput(empDeptNum);
-    }
-
     public void setEmpFName(String empFName) {
         this.empFName = validateInput(empFName);
     }
@@ -207,9 +198,6 @@ public class Employee extends Model {
         if(empNum == null || empNum.length() != 7){
             return false;
         }
-        if(empDeptNum == null || empDeptNum.length() != 7){
-            return false;
-        }
         if(empFName == null || empFName.length() > 45){
             return false;
         }
@@ -274,11 +262,13 @@ public class Employee extends Model {
     }
 
     public String getInsertQuery(){
-        return super.getInsertQuery() +
+        String superQuery;
+        if((superQuery = super.getInsertQuery()) == null){
+            return null;
+        }
+        return superQuery +
                 "VALUES (\'" +
                 empNum +
-                "\', \'" +
-                empDeptNum +
                 "\', \'" +
                 empFName +
                 "\', \'" +
@@ -317,6 +307,6 @@ public class Employee extends Model {
                 empSalary +
                 "\', \'" +
                 empVeteranStatus +
-                "\')";
+                "\');";
     }
 }

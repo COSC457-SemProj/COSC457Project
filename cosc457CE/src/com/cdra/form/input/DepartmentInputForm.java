@@ -34,9 +34,7 @@ public class DepartmentInputForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jTextField4 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        deptManagerEmpNumBox = new javax.swing.JTextField();
         deptNameBox = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -48,8 +46,6 @@ public class DepartmentInputForm extends javax.swing.JFrame {
         jTextField4.setText("jTextField4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel2.setText("Manger Employee Number*:");
 
         jLabel3.setText("Department Name*:");
 
@@ -96,10 +92,6 @@ public class DepartmentInputForm extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(deptNameBox, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(deptManagerEmpNumBox))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton1)))
@@ -120,11 +112,7 @@ public class DepartmentInputForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(deptLocNumBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(deptManagerEmpNumBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel7)
                 .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -145,30 +133,23 @@ public class DepartmentInputForm extends javax.swing.JFrame {
         String id = SystemInterface.generateUniqueId(department.getTableName());
         department.setDeptNum(id);
         department.setDeptLocNum(deptLocNumBox.getText());
-        department.setDeptManagerEmpNum(deptManagerEmpNumBox.getText());
         department.setDeptName(deptNameBox.getText());
         
         if(SystemInterface.insert(department) == null){
             JOptionPane.showMessageDialog(null, "Error, check your data and try again");
         }else{
-            JOptionPane.showMessageDialog(null, "Insert Successful, the Employee ID is " + id);
-            java.awt.EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    new HomePage().setVisible(true);
-                }
-            });
+            JOptionPane.showMessageDialog(null, "Insert Successful, the Department ID is " + id);
+            this.setVisible(false);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField deptLocNumBox;
-    private javax.swing.JTextField deptManagerEmpNumBox;
     private javax.swing.JTextField deptNameBox;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;

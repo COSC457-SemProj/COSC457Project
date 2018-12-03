@@ -68,7 +68,11 @@ public class Customer extends Model {
 
     @Override
     public String getInsertQuery(){
-        return super.getInsertQuery() +
+        String superQuery;
+        if((superQuery = super.getInsertQuery()) == null){
+            return null;
+        }
+        return superQuery +
                 "VALUES (\'" +
                 custNum +
                 "\', \'" +
@@ -79,6 +83,6 @@ public class Customer extends Model {
                 PoC +
                 "\', \'" +
                 custPhone +
-                "\')";
+                "\');";
     }
 }

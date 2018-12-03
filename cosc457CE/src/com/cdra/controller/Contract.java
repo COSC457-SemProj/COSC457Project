@@ -55,7 +55,11 @@ public class Contract extends Model {
 
     @Override
     public String getInsertQuery() {
-        return super.getInsertQuery() +
+        String superQuery;
+        if((superQuery = super.getInsertQuery()) == null){
+            return null;
+        }
+        return superQuery +
                 "VALUES (\'" +
                 conNum +
                 "\', \'" +
