@@ -20,20 +20,22 @@ public abstract class Model {
 
     public abstract boolean validate();
     public String getInsertQuery() {
-        validate();
-        StringBuilder sb = new StringBuilder();
-        sb.append("INSERT INTO ");
-        sb.append(tableName);
-        sb.append("(");
+        if(validate()){
+            StringBuilder sb = new StringBuilder();
+            sb.append("INSERT INTO ");
+            sb.append(tableName);
+            sb.append("(");
 
-        for(int i = 0; i < columns.length - 1; i++){
-            sb.append(columns[i]);
-            sb.append(", ");
+            for(int i = 0; i < columns.length - 1; i++){
+                sb.append(columns[i]);
+                sb.append(", ");
+            }
+            sb.append(columns[columns.length-1]);
+            sb.append(") ");
+
+            return sb.toString();
         }
-        sb.append(columns[columns.length-1]);
-        sb.append(") ");
-
-        return sb.toString();
+        return null;
     }
     
     public String validateInput(String input){

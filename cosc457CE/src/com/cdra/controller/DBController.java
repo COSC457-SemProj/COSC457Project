@@ -10,8 +10,9 @@ import java.sql.*;
 import java.util.Scanner;
 
 public class DBController {
-    public static final String[] base32Int = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "b", "c", "d", "e", "f", "g", "h", "j", "k",
-            "m", "n", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+    public static final String[] base32Int = {"0", "1", "2", "3", "4", "5", "6",
+        "7", "8", "9", "b", "c", "d", "e", "f", "g", "h", "j", "k",
+        "m", "n", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
     public static final String[] base32Bin = {"00000", "00001", "00010", "00011", "00100", "00101",
             "00110", "00111", "01000", "01001", "01010", "01011",
             "01100", "01101", "01110", "01111", "10000","10001",
@@ -32,7 +33,7 @@ public class DBController {
             String password = userFile.nextLine().replace("\n", "");
             userFile.close();
             newInstance = Class.forName("com.mysql.jdbc.Driver").newInstance();
-            connection = DriverManager.getConnection("jdbc:mysql://triton.towson.edu:3360/cgood4db", username, password);
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3360/cgood4db", username, password);
         }catch(ClassNotFoundException | InstantiationException | IllegalAccessException e){
             throw new DBControllerException("The driver com.mysql.jdbc.Driver cannot be found.");
         }catch(SQLException e){
@@ -109,7 +110,7 @@ public class DBController {
             String timeString = sb.toString();
             sb = new StringBuilder();
 
-            for (int i = 0, k = 0; i + 5 < timeString.length() && k < 5; i += 6, k += 1) {
+            for (int i = 0, k = 0; i + 5 < timeString.length() && k < 7; i += 6, k += 1) {
                 String b = timeString.substring(i, i + 5);
                 for (int j = 0; j < base32Bin.length; j++) {
                     if (base32Bin[j].equals(b)) {
@@ -131,7 +132,6 @@ public class DBController {
         return null;
 
     }
-
 
 //    String querys="select * from cgood4db.Employee;"; //your db
 //    ResultSet results = queryStatement.executeQuery(querys);

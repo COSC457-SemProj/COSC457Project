@@ -1,7 +1,9 @@
 package com.cdra.form.input;
 
+import com.cdra.HomePage;
 import com.cdra.SystemInterface;
 import com.cdra.controller.Location;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -133,10 +135,22 @@ public class LocationInputForm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Location location = new Location();
-        location.setLocNum(SystemInterface.generateUniqueId(location.getTableName()));
+        String id = SystemInterface.generateUniqueId(location.getTableName());
+        location.setLocNum(id);
         location.setLocName(locNameBox.getText());
         location.setLocAddress(locAddressBox.getText());
         location.setLocSecure(Boolean.toString(locSecureBox.isSelected()));
+        
+        if(SystemInterface.insert(location) == null){
+            JOptionPane.showMessageDialog(null, "Error, check your data and try again");
+        }else{
+            JOptionPane.showMessageDialog(null, "Insert Successful, the Employee ID is " + id);
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new HomePage().setVisible(true);
+                }
+            });
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

@@ -92,7 +92,7 @@ public class HomePage extends javax.swing.JFrame {
                                 .addGap(115, 115, 115)
                                 .addComponent(jButton3))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
+                        .addGap(63, 63, 63)
                         .addComponent(jLabel1)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );

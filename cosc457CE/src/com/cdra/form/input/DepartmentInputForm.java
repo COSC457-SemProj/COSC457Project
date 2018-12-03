@@ -1,7 +1,9 @@
 package com.cdra.form.input;
 
+import com.cdra.HomePage;
 import com.cdra.SystemInterface;
 import com.cdra.controller.Department;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -140,11 +142,22 @@ public class DepartmentInputForm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Department department = new Department();
-        department.setDeptNum(SystemInterface.generateUniqueId(department.getTableName()));
+        String id = SystemInterface.generateUniqueId(department.getTableName());
+        department.setDeptNum(id);
         department.setDeptLocNum(deptLocNumBox.getText());
         department.setDeptManagerEmpNum(deptManagerEmpNumBox.getText());
         department.setDeptName(deptNameBox.getText());
-        SystemInterface.insert(department);
+        
+        if(SystemInterface.insert(department) == null){
+            JOptionPane.showMessageDialog(null, "Error, check your data and try again");
+        }else{
+            JOptionPane.showMessageDialog(null, "Insert Successful, the Employee ID is " + id);
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new HomePage().setVisible(true);
+                }
+            });
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

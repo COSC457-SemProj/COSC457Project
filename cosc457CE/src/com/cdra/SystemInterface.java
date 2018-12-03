@@ -58,7 +58,11 @@ public class SystemInterface {
 
     public static String insert(Model model){
         try {
-            return String.valueOf(db.executeUpdate(model.getInsertQuery()));
+            String query;
+            if((query = model.getInsertQuery()) == null){
+                return null;
+            }
+            return String.valueOf(db.executeUpdate(query));
         }catch(SQLException e){
             return null;
         }

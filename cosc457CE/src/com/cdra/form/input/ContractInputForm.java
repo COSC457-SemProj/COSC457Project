@@ -1,7 +1,9 @@
 package com.cdra.form.input;
 
+import com.cdra.HomePage;
 import com.cdra.SystemInterface;
 import com.cdra.controller.Contract;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -137,11 +139,22 @@ public class ContractInputForm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Contract contract = new Contract();
-        contract.setConNum(SystemInterface.generateUniqueId(contract.getTableName()));
+        String id = SystemInterface.generateUniqueId(contract.getTableName());
+        contract.setConNum(id);
         contract.setConCustNum(conCustNumBox.getText());
         contract.setConName(conNameBox.getText());
         contract.setConBudget(conBudgetBox.getText());
-        SystemInterface.insert(contract);
+        
+        if(SystemInterface.insert(contract) == null){
+            JOptionPane.showMessageDialog(null, "Error, check your data and try again");
+        }else{
+            JOptionPane.showMessageDialog(null, "Insert Successful, the Employee ID is " + id);
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new HomePage().setVisible(true);
+                }
+            });
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked

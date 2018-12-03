@@ -1,7 +1,9 @@
 package com.cdra.form.input;
 
+import com.cdra.HomePage;
 import com.cdra.SystemInterface;
 import com.cdra.controller.Customer;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -152,12 +154,23 @@ public class CustomerInputForm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Customer customer = new Customer();
-        customer.setCustNum(SystemInterface.generateUniqueId(customer.getTableName()));
+        String id = SystemInterface.generateUniqueId(customer.getTableName());
+        customer.setCustNum(id);
         customer.setCustName(custNameBox.getText());
         customer.setCustPhone(custPhoneBox.getText());
         customer.setPoC(custPoCBox.getText());
         customer.setCustPrimaryAddress(custPrimaryAddressBox.getText());
-        SystemInterface.insert(customer);
+        
+        if(SystemInterface.insert(customer) == null){
+            JOptionPane.showMessageDialog(null, "Error, check your data and try again");
+        }else{
+            JOptionPane.showMessageDialog(null, "Insert Successful, the Employee ID is " + id);
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new HomePage().setVisible(true);
+                }
+            });
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
