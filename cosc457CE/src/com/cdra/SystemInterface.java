@@ -12,13 +12,18 @@ public class SystemInterface {
     private static DBController db;
 
     public static void __init__(){
-        db = new DBController("pathtopasswdfile");
+        db = new DBController("C:\\Users\\chris\\Documents\\dbinfo.txt");
     }
 
     public static String[][] select(String[] columns, String table, String condition){
         if(!db.validateTable(table)){
             return null;
         }
+        
+        columns = db.validateInput(columns);
+        table = db.validateInput(table);
+        condition = db.validateInput(condition);
+        
         try {
             ResultSet rs = db.executeQuery("SELECT " + String.join(", ", columns) + " FROM " + table + " WHERE " + condition + ";");
 
@@ -38,6 +43,10 @@ public class SystemInterface {
 
     public static String update(String table, String column, String value, String condition){
         if(db.validateTable(table)) {
+            table = db.validateInput(table);
+            table = db.validateInput(column);
+            table = db.validateInput(value);
+            table = db.validateInput(condition);
             try {
                 return String.valueOf(db.executeUpdate("Update" + table + "SET" + column + "=" + value + "WHERE" + condition + ";"));
             } catch (SQLException e) {
@@ -56,6 +65,8 @@ public class SystemInterface {
     }
 
     public static String delete(String table, String condition){
+        table = db.validateInput(table);
+        condition = db.validateInput(condition);
         try{
             return String.valueOf(db.executeUpdate("DELETE FROM " + table + " WHERE " + condition));
         }catch(SQLException e){
@@ -63,7 +74,7 @@ public class SystemInterface {
         }
     }
 
-    public String generateUniqueId(String table){
+    public static String generateUniqueId(String table){
         return db.generateUnique(table, System.currentTimeMillis());
     }
 }

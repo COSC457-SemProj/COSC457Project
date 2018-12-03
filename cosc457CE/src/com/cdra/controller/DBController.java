@@ -32,7 +32,7 @@ public class DBController {
             String password = userFile.nextLine().replace("\n", "");
             userFile.close();
             newInstance = Class.forName("com.mysql.jdbc.Driver").newInstance();
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3360/cgood4db", username, password);
+            connection = DriverManager.getConnection("jdbc:mysql://triton.towson.edu:3360/cgood4db", username, password);
         }catch(ClassNotFoundException | InstantiationException | IllegalAccessException e){
             throw new DBControllerException("The driver com.mysql.jdbc.Driver cannot be found.");
         }catch(SQLException e){
@@ -48,6 +48,34 @@ public class DBController {
 
     public int executeUpdate(String query) throws SQLException{
         return connection.createStatement().executeUpdate(query);
+    }
+    
+    public String validateInput(String input){
+        return input.replace("\'", "\\\'").
+                replace("\0", "\\\0").
+                replace("\b", "\\\b").
+                replace("\t", "\\\t").
+                replace("\n", "\\\n").
+                replace("\r", "\\\r").
+                replace("\"", "\\\"").
+                replace("%", "\\%").
+                replace("_", "\\_");
+    }
+    
+    public String[] validateInput(String[] input){
+        String[] validatedInput = new String[input.length];
+        for(int i = 0; i < input.length; i++){
+            validatedInput[i] = input[i].replace("\'", "\\\'").
+                replace("\0", "\\\0").
+                replace("\b", "\\\b").
+                replace("\t", "\\\t").
+                replace("\n", "\\\n").
+                replace("\r", "\\\r").
+                replace("\"", "\\\"").
+                replace("%", "\\%").
+                replace("_", "\\_");
+        }
+        return validatedInput;
     }
 
     public boolean validateTable(String table){

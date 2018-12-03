@@ -21,19 +21,19 @@ public class Location extends Model {
 
 
     public void setLocNum(String locNum){
-        this.locNum = locNum;
+        this.locNum = validateInput(locNum);
     }
 
     public void setLocAddress(String locAddress){
-        this.locAddress = locAddress;
+        this.locAddress = validateInput(locAddress);
     }
 
     public void setLocSecure(String locSecure){
-        this.locSecure = locSecure;
+        this.locSecure = validateInput(locSecure);
     }
 
     public void setLocName(String locName){
-        this.locName = locName;
+        this.locName = validateInput(locName);
     }
 
     public boolean validate(){

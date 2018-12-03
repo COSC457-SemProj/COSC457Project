@@ -35,4 +35,16 @@ public abstract class Model {
 
         return sb.toString();
     }
+    
+    public String validateInput(String input){
+        return input.replace("\'", "\\\'").
+                replace("\0", "\\\0").
+                replace("\b", "\\\b").
+                replace("\t", "\\\t").
+                replace("\n", "\\\n").
+                replace("\r", "\\\r").
+                replace("\"", "\\\"").
+                replace("%", "\\%").
+                replace("_", "\\_");
+    }
 }

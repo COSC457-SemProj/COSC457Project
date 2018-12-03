@@ -20,19 +20,19 @@ public class Department extends Model {
     public String getDeptName() { return deptName; }
 
     public void setDeptNum(String deptNum) {
-        this.deptNum = deptNum;
+        this.deptNum = validateInput(deptNum);
     }
 
     public void setDeptLocNum(String deptLocNum) {
-        this.deptLocNum = deptLocNum;
+        this.deptLocNum = validateInput(deptLocNum);
     }
 
     public void setDeptManagerEmpNum(String deptManagerEmpNum) {
-        this.deptManagerEmpNum = deptManagerEmpNum;
+        this.deptManagerEmpNum = validateInput(deptManagerEmpNum);
     }
 
     public void setDeptName(String deptName) {
-        this.deptName = deptName;
+        this.deptName = validateInput(deptName);
     }
 
     public boolean validate(){
