@@ -15,45 +15,74 @@ public class SystemInterface {
         db = new DBController("/home/cgood/dbinfo.txt");
     }
 
-    public static String[][] select(String[] columns, String table, String condition){
-        if(!db.validateTable(table)){
-            return null;
+    public static String[][] select(String[] table, String[] column, String[] comparator, String[] value){
+        for(String t : table){
+            if(!db.validateTable(t)){
+                return null;
+            }
         }
         
-        columns = db.validateInput(columns);
         table = db.validateInput(table);
-        condition = db.validateInput(condition);
+        column = db.validateInput(column);
+        comparator = db.validateInput(comparator);
+        value = db.validateInput(value);
         
         try {
-            ResultSet rs = db.executeQuery("SELECT " + String.join(", ", columns) + " FROM " + table + " WHERE " + condition + ";");
-
+            StringBuilder sb = new StringBuilder();
+            sb.append("SELECT * FROM " + String.join(", ", table) + " WHERE ");
+            int max = minimum(column.length, comparator.length, value.length);
+            for(int i = 0; i < max; i++){
+                sb.append(column[i] + " " + comparator[i] + " \'" + value[i] + "\'");
+                if(i < max - 1){
+                    sb.append(" AND ");
+                }
+            }
+            sb.append(";");
+            ResultSet rs = db.executeQuery(sb.toString());
+            
+            Model m = db.getModel(table[0]);
+            String[] resColumns = m.getColumns();
             ArrayList<String[]> results = new ArrayList<>();
             while(rs.next()){
-                String[] newColumn = new String[columns.length];
-                for(int i = 0; i < columns.length; i++){
-                    newColumn[i] = ((String) rs.getObject(columns[i]));
+                String[] newColumn = new String[resColumns.length];
+                for(int i = 0; i < resColumns.length; i++){
+                    newColumn[i] = rs.getObject(resColumns[i]).toString();
                 }
                 results.add(newColumn);
             }
-            return (String[][]) results.toArray();
+            return results.toArray(new String[results.size()][]);
         }catch(SQLException e){
             return null;
         }
     }
-
-    public static String update(String table, String column, String value, String condition){
-        if(db.validateTable(table)) {
-            table = db.validateInput(table);
-            table = db.validateInput(column);
-            table = db.validateInput(value);
-            table = db.validateInput(condition);
-            try {
-                return String.valueOf(db.executeUpdate("Update" + table + "SET" + column + "=" + value + "WHERE" + condition + ";"));
-            } catch (SQLException e) {
-                return null;
+    
+    public static String update(String table, String[] columns, String[] values,
+            String[] conColumn, String[] conComparator, String[] conValues){
+        db.validateInput(table);
+        db.validateInput(columns);
+        db.validateInput(values);
+        db.validateInput(conColumn);
+        db.validateInput(conComparator);
+        db.validateInput(conValues);
+        String[] sb;
+        for(int j = 0; j < columns.length && j < values.length; j++){
+            sb = new String[minimum(conColumn.length, conComparator.length, conValues.length)];
+            for(int i = 0; i < conColumn.length && i < conComparator.length && i < conValues.length; i++){
+                sb[i] = conColumn[i] + " " + conComparator[i] + " \'" + conValues[i] + "\'";
+            }
+            try{
+                db.executeUpdate("UPDATE " + table +
+                        " SET " + columns[j] + " = \'"+ values[j] +
+                        "\' WHERE " + String.join(" AND ", sb) + ";");
+            }catch(SQLException e){
+                return Integer.toString(j);
             }
         }
-        return null;
+        return Integer.toString(Math.min(columns.length, values.length));
+    }
+    
+    private static int minimum(int i1, int i2, int i3){
+        return Math.min(i1, Math.min(i2, i3));
     }
 
     public static String insert(Model model){
@@ -76,6 +105,10 @@ public class SystemInterface {
         }catch(SQLException e){
             return null;
         }
+    }
+    
+    public static Model getModelByName(String tableName){
+        return db.getModel(tableName);
     }
 
     public static String generateUniqueId(String table){

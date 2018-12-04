@@ -27,11 +27,39 @@ public class Employee extends Model {
     private String empVeteranStatus;
 
     public Employee(){
-        super("Proj_Employee", new String[] {"EmpNum", "EmpFName", "EmpLName", "EmpLName", "EmpSSN",
+        super("Proj_Employee", new String[] {"EmpNum", "EmpFName", "EmpMName", "EmpLName", "EmpSSN",
                 "EmpDoB", "EmpPoB", "EmpAddress", "EmpZipCode", "EmpEmergencyPhone", "EmpEmergencyPoC", "EmpTitle",
                 "EmpGender", "EmpHomePhone", "EmpCellPhone", "EmpAnniversaryMonth", "EmpSixMonthReview", "EmpAnnualReview",
                 "EmpSalary", "EmpVeteranStatus"},
                 new String[] {"EmpNum"});
+    }
+    
+    public Employee(String[] values){
+        super("Proj_Employee", new String[] {"EmpNum", "EmpFName", "EmpMName", "EmpLName", "EmpSSN",
+                "EmpDoB", "EmpPoB", "EmpAddress", "EmpZipCode", "EmpEmergencyPhone", "EmpEmergencyPoC", "EmpTitle",
+                "EmpGender", "EmpHomePhone", "EmpCellPhone", "EmpAnniversaryMonth", "EmpSixMonthReview", "EmpAnnualReview",
+                "EmpSalary", "EmpVeteranStatus"},
+                new String[] {"EmpNum"});
+        empNum = values[0];
+        empFName = values[1];
+        empMName = values[2];
+        empLName = values[3];
+        empSSN = values[4];
+        empDoB = values[5];
+        empPoB = values[6];
+        empAddress = values[7];
+        empZipCode = values[8];
+        empEmergencyPhone = values[9];
+        empEmergencyPoC = values[10];
+        empTitle = values[11];
+        empGender = values[12];
+        empHomePhone = values[13];
+        empCellPhone = values[14];
+        empAnniversaryMonth = values[15];
+        empSixMonthReview = values[16];
+        empAnnualReview = values[17];
+        empSalary = values[18];
+        empVeteranStatus = values[19];
     }
 
     public String getEmpNum() {

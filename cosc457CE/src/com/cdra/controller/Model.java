@@ -4,6 +4,7 @@ public abstract class Model {
     private String[] columns;
     private String tableName;
     private String[] primaryKey;
+    
     public Model(String tableName, String[] columns, String[] primaryKey){
         this.tableName = tableName;
         this.columns = columns;
@@ -16,6 +17,10 @@ public abstract class Model {
 
     public String[] getPrimaryKey(){
         return primaryKey;
+    }
+
+    public String[] getColumns(){
+        return columns;
     }
 
     public abstract boolean validate();

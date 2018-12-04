@@ -9,7 +9,7 @@ public class Department extends Model {
 
     public Department(){
         super("Proj_Department",
-                new String[] {"DeptNum", "DeptLoc", "DeptManagerEmpNum", "DeptName"},
+                new String[] {"DeptNum", "DeptLocNum", "DeptName"},
                 new String[] {"DeptNum"});
     }
 
@@ -36,7 +36,7 @@ public class Department extends Model {
         if(deptLocNum == null || deptLocNum.length() != 7){
             return false;
         }
-        if(deptName == null || deptName.length() != 45){
+        if(deptName == null || deptName.length() > 45){
             return false;
         }
         return true;

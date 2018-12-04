@@ -3,6 +3,7 @@ package com.cdra.form.input;
 import com.cdra.HomePage;
 import com.cdra.SystemInterface;
 import com.cdra.controller.Employee;
+import com.cdra.controller.Race;
 import javax.swing.JOptionPane;
 
 /*
@@ -16,7 +17,8 @@ import javax.swing.JOptionPane;
  * @author David
  */
 public class EmployeeInputForm extends javax.swing.JFrame {
-    private String[] months = {};
+    private String[] months = {"Januray", "Februrary", "March", "April", "May",
+        "June", "July", "August", "September", "October", "November", "December"};
     /**
      * Creates new form EmployeeInputForm
      */
@@ -130,6 +132,11 @@ public class EmployeeInputForm extends javax.swing.JFrame {
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
+            }
+        });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -372,13 +379,21 @@ public class EmployeeInputForm extends javax.swing.JFrame {
         employee.setEmpSalary(empSalaryBox.getText());
         employee.setEmpVeteranStatus(empVeteranStatusBox.getText());
 
+        Race race = new Race();
+        race.setRace(empRaceBox.getText());
+        race.setRaceEmpNum(id);
         if(SystemInterface.insert(employee) == null){
             JOptionPane.showMessageDialog(null, "Error, check your data and try again");
         }else{
+            SystemInterface.insert(race);
             JOptionPane.showMessageDialog(null, "Insert Successful, the Employee ID is " + id);
-            this.setVisible(false);
+            this.dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
     
     private int getMonthNum(){
         String selectedItem = (String) empAnniversaryMonthBox.getSelectedItem();

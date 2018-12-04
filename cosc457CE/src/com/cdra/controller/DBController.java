@@ -21,7 +21,7 @@ public class DBController {
             "11110", "11111"};
 
     public static final Model[] models = {new Employee(), new Race(), new Location(), new WorksOn(), new Contract(),
-            new Customer(), new Department()};
+            new Customer(), new Department(), new Manager()};
 
     private Object newInstance;
     private Connection connection;
@@ -59,8 +59,7 @@ public class DBController {
                 replace("\n", "\\\n").
                 replace("\r", "\\\r").
                 replace("\"", "\\\"").
-                replace("%", "\\%").
-                replace("_", "\\_");
+                replace("%", "\\%");
     }
     
     public String[] validateInput(String[] input){
@@ -73,8 +72,7 @@ public class DBController {
                 replace("\n", "\\n").
                 replace("\r", "\\r").
                 replace("\"", "\\\"").
-                replace("%", "\\%").
-                replace("_", "\\_");
+                replace("%", "\\%");
         }
         return validatedInput;
     }
@@ -89,7 +87,7 @@ public class DBController {
         return valid;
     }
 
-    private Model getModel(String table){
+    public Model getModel(String table){
         for(Model model : models){
             if(table.equals(model.getTableName())){
                 return model;

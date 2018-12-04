@@ -5,6 +5,10 @@
  */
 package com.cdra.form.hourlog;
 
+import com.cdra.SystemInterface;
+import com.cdra.controller.WorksOn;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author cgood
@@ -16,10 +20,11 @@ public class HourEditorForm extends javax.swing.JFrame {
      */
     public HourEditorForm(String[][] response) {
         initComponents();
-        empIDLabel.setText(empIDLabel.getText() + response[0][0]);
-        conNumLabel.setText(conNumLabel.getText() + response[0][1]);
+        empID = response[0][0];
+        conNum = response[0][1];
+        empIDLabel.setText(empIDLabel.getText() + empID);
+        conNumLabel.setText(conNumLabel.getText() + conNum);
         hoursBox.setText(response[0][2]);
-        
     }
 
     /**
@@ -50,8 +55,18 @@ public class HourEditorForm extends javax.swing.JFrame {
         jLabel2.setText("Hours: ");
 
         jButton1.setText("Cancel");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Submit");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,6 +113,45 @@ public class HourEditorForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        WorksOn worksOn = new WorksOn();
+        String[] workPrim = worksOn.getPrimaryKey();
+        if(SystemInterface.select(new String[] {worksOn.getTableName()},
+                workPrim,
+                new String[] {"=", "="},
+                new String[] {empID, conNum}).length > 0){
+            if(SystemInterface.update(
+                    worksOn.getTableName(),
+                    new String[] {"WorksOnHours"},
+                    new String[] {hoursBox.getText()},
+                    workPrim,
+                    new String[] {"=", "="},
+                    new String[] {empID, conNum}) == null){
+                JOptionPane.showMessageDialog(null, "Error, check your data and try again..");
+            }else{
+                JOptionPane.showMessageDialog(null, "Log Successful");
+                this.dispose();
+            }
+        }else{
+            worksOn.setWorksOnEmpNum(empID);
+            worksOn.setWorksOnConNum(conNum);
+            worksOn.setWorksOnHours(hoursBox.getText());
+            if(SystemInterface.insert(worksOn) == null){
+                JOptionPane.showMessageDialog(null, "Error, check your data and try again..");
+            }else{
+                JOptionPane.showMessageDialog(null, "Log Successful");
+                this.dispose();
+            }
+        }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    private String empID;
+    private String conNum;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel conNumLabel;
     private javax.swing.JLabel empIDLabel;

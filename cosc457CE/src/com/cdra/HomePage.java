@@ -2,7 +2,8 @@ package com.cdra;
 import com.cdra.form.update.UpdateForm;
 import com.cdra.form.input.InputForm;
 import com.cdra.SystemInterface;
-import com.cdra.form.SearchForm;
+import com.cdra.form.hourlog.LogHoursForm;
+import com.cdra.form.search.SearchForm;
 import java.awt.event.WindowEvent;
 
 /*
@@ -39,6 +40,7 @@ public class HomePage extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         jButton4.setText("jButton4");
 
@@ -75,6 +77,13 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setText("Log Hours");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,14 +96,16 @@ public class HomePage extends javax.swing.JFrame {
                             .addComponent(jButton5)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton1)
-                                .addGap(115, 115, 115)
+                                .addGap(53, 53, 53)
                                 .addComponent(jButton2)
-                                .addGap(115, 115, 115)
-                                .addComponent(jButton3))))
+                                .addGap(55, 55, 55)
+                                .addComponent(jButton3)
+                                .addGap(50, 50, 50)
+                                .addComponent(jButton6))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(63, 63, 63)
                         .addComponent(jLabel1)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,7 +116,8 @@ public class HomePage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jButton3)
+                    .addComponent(jButton6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addComponent(jButton5)
                 .addContainerGap())
@@ -135,12 +147,20 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-         java.awt.EventQueue.invokeLater(new Runnable() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new UpdateForm().setVisible(true);
             }
         });
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new LogHoursForm().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,6 +204,7 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
